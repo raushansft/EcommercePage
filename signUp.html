@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SginUp Page</title>
+    <style>
+        form{
+            display: grid;
+            gap: 20px;
+            width: 30%;
+            height: auto;
+            margin: auto;
+        }
+        #c{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="c">Create Account</h1>
+    <form>
+        <input id="name" type="text" placeholder="Enter Your Name">
+        <input id="number" type="number" placeholder="Enter Mobile Number">
+        <input id="email" type="email" placeholder="Enter Email id">
+        <input id="password" type="password" placeholder="Set Your Password">
+        <input type="submit" value="Continue">
+    </form>
+    
+</body>
+<script>
+    document.querySelector('form').addEventListener('submit',signUpFn);
+    var userData;
+    if(localStorage.getItem('userData')===null){
+        userData=[];
+    }else{
+        userData=JSON.parse(localStorage.getItem('userData'));
+    }
+
+    function signUpFn(){
+       
+        event.preventDefault();
+       
+        if(document.querySelector('#name').value.length==0 || document.querySelector('#email').value.length==0
+        || document.querySelector('#number').value.length==0 || document.querySelector('#password').value.length==0){
+            alert("Please Fill the Details");
+        }else{
+            userObj={
+            name:document.querySelector('#name').value,
+            email:document.querySelector('#email').value,
+            mobile:document.querySelector('#number').value,
+            password:document.querySelector('#password').value,
+        };
+        userData.push(userObj);
+        localStorage.setItem('userData',JSON.stringify(userData));
+        alert("Account Create Successfully ");
+         window.location.href='men.html';
+            
+
+        }                     
+    }
+
+
+</script>
+
+</html>
