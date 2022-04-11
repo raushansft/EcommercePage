@@ -86,6 +86,13 @@ cartData.forEach((cartItem, cartIndex) => {
     box.append(img, name, price, cartButton,promo,apply);
     document.querySelector('#checkout').append(box)
 });
+
+var paybtn=document.createElement('button');
+paybtn.innerHTML="Continue For Payment";
+document.querySelector('body').append(paybtn);
+paybtn.addEventListener('click',function(){
+    window.location.href='payment.html';
+});
 </script>
 
 </html>
